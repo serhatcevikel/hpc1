@@ -10,7 +10,7 @@ RUN apt update && \
         pciutils lshw encfs fuse3 sshfs;
 
 RUN cp ${HOME}/binder/sshd_config /etc/ssh/ && \
-    chmod 666 /etc/ssh/ssh_host_*;    
+    chmod 600 /etc/ssh/ssh_host_*;    
 
 RUN pip install sos sos-pbs sos-notebook sos-r sos-python sos-bash && \
 	python -m sos_notebook.install;
