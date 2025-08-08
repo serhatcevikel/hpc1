@@ -1,9 +1,21 @@
-FROM gesiscss/binder-r2d-g5b5b759-serhatcevikel-2dbeyond-5fbounds-cb7907:e31752ba4ce1dc6c98c6a308cf275e6de02a9095
-#FROM registry.gesis.mybinder.org/i-serhatcevikel-2dbeyond-5fbounds-cb7907:a34104db43fea63d86f1b577e2cad1b9b00b0f70
+#FROM gesiscss/binder-r2d-g5b5b759-serhatcevikel-2dbeyond-5fbounds-cb7907:2b97cc68e202dc222f04d09fd92f172cabe032be
+FROM registry.gesis.mybinder.org/i-serhatcevikel-2dbeyond-5fbounds-cb7907:8b249a21b0bafceddc47760691c3458c5f98e2c3
 
-COPY --chown=jovyan:jovyan . ${HOME}
+COPY --chown=jovyan:jovyan ./binder ${HOME}/binder
 
-RUN Rscript ${HOME}/binder/install4.r; 
+USER root
+
+RUN apt update && \
+    apt install -y openssh-server netcat pssh ncdu rsync \
+        pciutils lshw encfs fuse3 sshfs;
+
+RUN cp ${HOME}/binder/sshd_config /etc/ssh/ && \
+    chmod 666 /etc/ssh/ssh_host_*;    
+
+RUN pip install sos sos-pbs sos-notebook sos-r sos-python sos-bash && \
+	python -m sos_notebook.install;
+
+RUN Rscript ${HOME}/binder/install3.r; 
 
 RUN rm -r ${HOME}/binder
 
