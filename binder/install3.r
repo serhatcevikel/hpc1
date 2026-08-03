@@ -16,7 +16,7 @@ cranlist <- c('sparsio', 'graphframes', 'doFuture', 'future.callr', 'future.test
 'evgam', 'extraDistr', 'fastNaiveBayes', 'fitdistrplus', 'actuar', 'bda', 'fractaldim', 'isotone',
 'lqmm', 'mlogit', 'monreg', 'fdrtool', 'Mqrcm', 'naivebayes', 'qgam', 'qrcmNP', 'qrLMM', 'qrnn',
 'quantregForest', 'quantregGrowth', 'Rfit', 'rlme', 'runner', 'siqr', 'unitquantreg', 'vasicekreg',
-'VGAM', 'zoib', 'FlexReg', 'betaBayes')
+'VGAM', 'zoib', 'FlexReg', 'betaBayes','qs2')
 
 githublist <- c('AndrMenezes/unitModalReg')
 
